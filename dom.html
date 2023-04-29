@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dom.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="section">
+
+    </div>
+
+    <script>
+        const section = document.getElementById("section");
+
+        const url = "https://nutty-mite-flip-flops.cyclic.app/course";
+
+        function getdata() {
+            fetch(url).then((result) =>{
+                result = result.json();
+                return result;
+
+            }).then((result) =>{
+                console.log(result);
+                mapdata(result);
+
+            }).catch((error) =>{
+                console.log(error);
+            })
+        }
+
+        const mapdata = (data) =>{
+            data.map((Element) =>{
+                let card = document.createElement("div");
+                let image = document.createElement("img");
+                image.src = Element.url;
+                image.setAttribute("class" , "image");
+
+                let title = document.createElement("h1");
+                title.innerText = Element.title;
+
+                let creater = document.createElement('h2');
+                creater.innerText = Element.creater;
+
+                let modules = document.createElement('h3');
+                modules.innerText = Element.modules;
+
+                let hours = document.createElement('h4');
+                hours.innerText = Element.hours;
+
+                let level = document.createElement('h5');
+                level.innerText = Element.level;
+
+                let type = document.createElement('h6');
+                type.innerText = Element.type;
+
+                let btn = document.createElement('button');
+                btn.innerText = "ADD";
+
+                btn.addEventListener('click',()=>{
+                    window.location.href = "./dashbord.html";
+                })
+
+                card.append(image,title,creater,modules,hours,level,type,btn);
+                section.append(card);
+
+            })
+        }
+
+        getdata();
+
+    </script>
+    
+</body>
+</html>

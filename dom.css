@@ -1,0 +1,11 @@
+#section{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+        padding: 20px 10px 80px 10%;
+        /* display: flex; */
+        /* flex-wrap: wrap; */
+        justify-content: center;
+}
+.poster{
+    width: 100px;
+}
